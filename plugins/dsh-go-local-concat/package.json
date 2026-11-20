@@ -1,0 +1,39 @@
+{
+  "name": "local-concat",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "lib/index.js",
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0-0"
+  },
+  "dshGo": {
+    "v": 1,
+    "title": { "zh": "Concat 剪辑", "en": "Concat edit" },
+    "icon": "video-file",
+    "wants": ["clipboard"],
+    "contributes": {
+      "composer.strip": [
+        { "id": "concat-status", "icon": "video-file", "panel": "concat" }
+      ],
+      "composer.actions": [
+        { "id": "concat-clip", "label": { "zh": "剪这段", "en": "Cut this" }, "icon": "video" },
+        { "id": "concat-prompt", "label": { "zh": "剪辑指令", "en": "Edit brief" }, "icon": "terminal" }
+      ],
+      "panels": [
+        {
+          "id": "concat",
+          "title": { "zh": "Concat", "en": "Concat" },
+          "icon": "video-file",
+          "placement": ["session.tab", "features"],
+          "presentation": "sheet"
+        }
+      ]
+    }
+  }
+}
