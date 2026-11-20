@@ -3662,6 +3662,10 @@ impl WgpuCompositor {
             let mut params = pass.params.clone();
             params.resize(shader.params.size() as usize, 0);
             self.queue.write_buffer(&shader.params, 0, &params);
+            // Flush the uniform writes before the pass's own submission, so a
+            // driver that defers them cannot draw the pass with the previous
+            // frame's parameters.
+            self.queue.submit([]);
         }
 
         let shader = &self.transitions[&pass.key];
