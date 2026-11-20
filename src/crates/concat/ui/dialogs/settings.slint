@@ -721,11 +721,12 @@ export component SettingsDialog inherits Sheet {
         I18n.t("settings.mint"),
     ];
 
-    /// The window is a phone's. No Automation page then - the API on a socket
-    /// is a desk's affair, driven from a terminal the phone has not got -
-    /// and the column of pages starts narrower and drags by a wider
-    /// hairline, since the sheet is the screen's width and a finger is
-    /// what drags it.
+    /// The window is a phone's. The column of pages starts narrower and
+    /// drags by a wider hairline, since the sheet is the screen's width and
+    /// a finger is what drags it. The Automation page is on a phone's list
+    /// as well: the API on a socket is how an agent running on the device
+    /// drives the editor, and a phone has one now even without a terminal
+    /// of its own.
     in property <bool> phone;
 
     /// Too narrow for a column of pages beside the page: a phone, a tablet
@@ -743,6 +744,7 @@ export component SettingsDialog inherits Sheet {
         {label: I18n.t("settings.appearance"), glyph: Glyph.sun, page: 1},
         {label: I18n.t("common.transcriber"), glyph: Glyph.waveform, page: 2},
         {label: I18n.t("common.speech"), glyph: Glyph.music, page: 3},
+        {label: I18n.t("settings.automation"), glyph: Glyph.lock, page: 4},
         {label: I18n.t("settings.about"), glyph: Glyph.sparkle, page: 5},
     ] : [
         {label: I18n.t("settings.general"), glyph: Glyph.settings, page: 0},
@@ -1342,7 +1344,7 @@ export component SettingsDialog inherits Sheet {
             // the address and the token are there for the one who is
             // putting a script on another machine, and the page says
             // plainly when the address it is given reaches past this one.
-            if root.data.tab == 4 && !root.phone: VerticalLayout {
+            if root.data.tab == 4: VerticalLayout {
                 DialogSection {
                     ruled: false;
                     first: true;
