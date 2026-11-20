@@ -73,3 +73,7 @@ Edits stay in memory until `project_save`, as in the window. Times are seconds; 
 MCP over stdio, newline-delimited JSON-RPC 2.0. Both protocol eras are served: the `initialize` handshake (2025-11-25, 2025-06-18, 2025-03-26, 2024-11-05) and the per-request `_meta` of 2026-07-28 with `server/discover`. `ping`, `tools/list`, `tools/call`, progress notifications for `export_wait`, and `notifications/cancelled` are supported. Standard output carries only protocol; the server logs to standard error.
 
 For scripts that do not speak MCP, the same API is served as JSON-RPC lines on a socket from Settings > Automation; see [the developer docs](https://concat.standalones.org/docs).
+
+## DSH
+
+[DSH](https://github.com/deepseek-ai/deepseek-harness) users have two extra options: a Python bridge that serves these tools to any MCP client (useful on a phone, where the Rust binary is not built), and a small dsh-go plugin that shows the editor's status in the app. Both live in [`scripts/dsh-bridge/`](../scripts/dsh-bridge/); see [DSH.md](DSH.md).
